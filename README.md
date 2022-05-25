@@ -36,4 +36,4 @@ nodemon app.js
 2. Supported actions for users are sign-in, sign-up, sign-out and uploading data.
 
 ## Results
-![Alt text](images/login.jpg?raw=true "Title")
+![Alt text](images/login.png?raw=true "Title")
