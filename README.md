@@ -33,7 +33,8 @@ nodemon app.js
 
 ## Key Points
 1. Store secret key in .env. Keep its status in cookies.
-2. Supported actions for users are sign-in, sign-up, sign-out and uploading data.
+2. Whenever access the 'upload' page, the server will check client's token kept in the cookie.
+3. Supported actions for users are sign-in, sign-up, sign-out and uploading data.
 
 ## Results
 ![Alt text](images/login.png?raw=true "Title")
