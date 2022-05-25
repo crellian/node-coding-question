@@ -21,7 +21,7 @@ function authenticateToken(req, res, next) {
   jwt.verify(token, ''+process.env.TOKEN_SECRET, (err, user) => {
       if (err) return res.sendStatus(403)
 
-      req.user = user
+      res.cookie('user', user);
 
       next()
   })
@@ -50,19 +50,19 @@ router.post('/', type, function (req,res) {
       if (err) {
          res.send("File System Error!")
       } else {
-         //insert image data into the table
-         const query = {
-             text: 'UPDATE user_info SET title=$1, description=$2, filename=$3 WHERE email=$4',
-             values: [title, desc, filename, 'cliu2660@usc.edu'],
-         }
-
-         pool.query(query, (err) => {
-             if (err) {
-                 res.send("Database Error!")
-             } else {
-                 res.send("You've successfully uploaded!");
-             }
-         })
+          //insert data into the table
+          const query = {
+              text: 'UPDATE user_info SET title=$1, description=$2, filename=$3 WHERE email=$4',
+              values: [title, desc, filenameArr, req.cookies["user"]["username"]],
+          }
+          console.log(req.cookies)
+          pool.query(query, (err, res_) => {
+              if(res_.rowCount){
+                  res.send("You've successfully uploaded!");
+              } else {
+                  res.send("Database Error!")
+              }
+          })
       }
   });
 });

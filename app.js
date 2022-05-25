@@ -28,7 +28,7 @@ pool.query(createTable, (err, res) => {
 
 //create secret key
 const secret = require('crypto').randomBytes(64).toString('hex')
-  fs.writeFile('key.env', 'TOKEN_SECRET=' + secret,  function(err) {
+  fs.writeFile('.env', 'TOKEN_SECRET=' + secret,  function(err) {
      if (err) {
        return console.error(err);
      }
