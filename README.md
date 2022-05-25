@@ -1,43 +1,50 @@
 # node-coding-question
 
-## Technologies to use for this coding question(Required):
-* Node.js
-* Express.js
-* JWT
-* Sequelize
-* AWS EB
-* AWS S3
+## Requirement 1
 
-## What all things you will be evaluated on?
-* Naming conventions 
-* Readability of the code
-* Your file structure
-* Error handling
-
-## How to submit?
-Reply back to the email with an open github repository.
-
-## How you should work on it?
-You work in an agile environment where your manager keeps on coming up with new requirements. The requirements are listed below, you have to change your code or your model and create migration files requirement by requirement. Create a branch and README.md(explaingin your approach to solve it) for each requirement listed below. Screenshots of the api call results are appreciated in README.md but not required.
-
-## Requirements:
-### Req1:
-1. Create express.js app and use postgres sql as database.
-2. Make routes where user can register itself. Required fields of user are name, email and password.
-3. User can login with its email and password and gets a JWT token.
-4. Logged in users can create a post. Post has 3 attribues title, description and a photo.
-
-## Req 2:
-Your manager next week talks to the client and gives you necessary changes to be made this week.
-1. A post will have an attribute when it was created.
-2. Post returning api will calculate the time difference like 2s ago, 10d ago, 4w ago, 8m ago and 1yr ago.
-3. A post can have multiple photos but atmost 5.
-4. A post can be editied.
-
-## Req 3:
-1. A post can have multiple comments. Comments will show the user who commented and the comment.
-2. Need to add pagination in the post and in the comments of the post.
-3. User have the option to create their username. Update the user model.
+### Running A Test
+#### Please run the following command to start a server: 
+(You need to set the parameters according to database environment. PGUSER--database username, PGDATABASE--database name, PGPASSWORD--databaase password)<br /><br />
+npm install <br />
+PGUSER='postgres' \\\
+PGDATABASE='postgres'\\
+PGPASSWORD='zxcvbn' \\
+nodemon app.js
+#### Please open the link http://localhost:3000/ in browser to start a client 
 
 
-## Best of luck! Happy Coding! 
+### File Structure
+**--app.js**   //main entry<br />
+**--public** //storing static files, inclusing css and html files<br />
+&nbsp;&nbsp;--css<br />
+&nbsp;&nbsp;&nbsp;&nbsp;--login.css //login page settings<br />
+&nbsp;&nbsp;&nbsp;&nbsp;--signup.css<br />
+&nbsp;&nbsp;&nbsp;&nbsp;--upload.css<br />
+&nbsp;&nbsp;&nbsp;&nbsp;--gallert.css<br />
+&nbsp;&nbsp;--html<br />
+&nbsp;&nbsp;&nbsp;&nbsp;--login.html<br />
+&nbsp;&nbsp;&nbsp;&nbsp;--signup.html<br />
+&nbsp;&nbsp;&nbsp;&nbsp;--upload.html<br />
+&nbsp;&nbsp;&nbsp;&nbsp;--gallert.html<br />
+**--routes**  //request handler<br />
+&nbsp;&nbsp;--login.js   //backend algorithms<br />
+&nbsp;&nbsp;--signup.js<br />
+&nbsp;&nbsp;--upload.js<br />
+&nbsp;&nbsp;--buildHtml.js<br />
+**--uploads** //storing uploaded images; storing filenames in the database
+
+
+## Key Points
+1. Enabled sign-out. 
+2. Reformatted naming of stored image files to avoid conflication between different users. Sample name format: "username_filename.jpg".
+3. Keep two tables in database: one is for user information (email, password, etc.), the other is for uploaded images (email, data, filenames). Files uploaded in one Post are managed together in a single entry of the table. Filenames are concatenated in a string like 'image1;image2;image3'.
+5. Supported actions for users are sign-in, sign-up, sign-out and uploading data.
+6. Maximum number of images allowed to be submitted is constrained by multer().array('img', 5);
+7. When user request to access remotely stored images, the server will send a query to the backend database and obatain several records. Each record represents a Post and includes indices to no more than five images. The 'buildHtml.js' will generate an html file for each Post, and different Post are paginated by links.
+8. Users can edit their Posts by upload new data with the same title. The database will perform UPSERT in the backend.
+
+## Results
+![Alt text](images/login.png?raw=true "Title")
+![Alt text](images/signup.png?raw=true "Title")
+![Alt text](images/upload.png?raw=true "Title")
+![Alt text](images/gallery.png?raw=true "Title")
