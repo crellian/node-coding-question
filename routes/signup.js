@@ -13,7 +13,9 @@ dotenv.config({path: path.resolve(__dirname, '..', '.env')});
 //define a function for key generation
 const jwt = require('jsonwebtoken');
 function generateAccessToken(username) {
+    console.log(1)
   return jwt.sign(username, process.env.TOKEN_SECRET);
+    console.log(2)
 }
 
 //show signup page

@@ -71,3 +71,9 @@ html {
 .uploadBox .uploadBtn:HOVER {
     background-image: linear-gradient(to top, #a5dcf3, #85CFEE);
 }
+
+a:link {
+   margin-left: 260px;
+   color:black;
+}
+
