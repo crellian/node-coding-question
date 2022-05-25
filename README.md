@@ -37,3 +37,5 @@ nodemon app.js
 
 ## Results
 ![Alt text](images/login.png?raw=true "Title")
+![Alt text](images/signup.png?raw=true "Title")
+![Alt text](images/upload.png?raw=true "Title")
