@@ -1,6 +1,6 @@
 ## Technologies being used
 HTML<br />
-CSS
+CSS <br />
 Node.js <br />
 Express.js <br />
 JWT <br />
