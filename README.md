@@ -1,4 +1,8 @@
-# node-coding-question
+## Technologies being used
+Node.js
+Express.js
+JWT
+PostgreSQL
 
 ## Requirement 1
 
