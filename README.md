@@ -4,6 +4,7 @@
 
 ### Running A Test
 #### Please run the following command to start a server: 
+(Check if there is a /uploads/ folder under the root, if it is not there please create one.)
 (You need to set the parameters according to database environment. PGUSER--database username, PGDATABASE--database name, PGPASSWORD--databaase password)<br /><br />
 npm install <br />
 PGUSER='postgres' \\\
