@@ -1,7 +1,7 @@
 ## Technologies being used
-Node.js
-Express.js
-JWT
+Node.js <br />
+Express.js <br />
+JWT <br />
 PostgreSQL
 
 ## Requirement 1
